@@ -15,7 +15,6 @@ configViewEngine(app)
 app.use('/', webRoutes)
 
 
-
 //Test connect to database
 connection.query('SELECT * FROM Users', (error, results, fields) => {
   if (error) throw error
