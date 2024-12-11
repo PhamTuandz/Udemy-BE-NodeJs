@@ -2,6 +2,10 @@ const getHomePage = (req, res) => {
   return res.render('home.ejs')
 }
 
+const createUer = (req, res) => {
+    return res.render('home.ejs')
+    }
 module.exports = {
-    getHomePage
+    getHomePage,
+    createUer
 }
