@@ -1,5 +1,5 @@
 require("dotenv").config();
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 
 // Tạo mới kết nối đến database => Gây tình trạng chết server nếu như nhiều truy cập cùng lúc
 

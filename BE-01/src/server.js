@@ -18,12 +18,6 @@ configViewEngine(app)
 app.use('/', webRoutes)
 
 
-//Test connect to database
-connection.query('SELECT * FROM Users', (error, results, fields) => {
-  if (error) throw error
-  console.log('The solution is: ', results)
-})
-
 app.listen(port, hostname, () => {
   console.log('Server is listening on port' + port)
 })
