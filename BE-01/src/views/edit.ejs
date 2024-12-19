@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Page</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+
+    </div>
+    <div class="form-add-new">
+        <form action="/edit-user" method="post">
+            <fieldset>
+                <legend>Form Eidt Users</legend>
+                <div class="input-group">
+                    <label>Id: </label>
+                    <input name="id" type="text" value="<%= user.id %>" />
+                </div>
+                <div class="input-group">
+                    <label>Email: </label>
+                    <input name="email" type="text" value="<%= user.email %>" />
+                </div>
+                <div class="input-group">
+                    <label>Name: </label>
+                    <input name="name" type="text" value="<%= user.name %>" />
+                </div>
+                <div class="input-group">
+                    <label>City: </label>
+                    <input name="city" type="text" value="<%= user.city %>" />
+                </div>
+                <div>
+                    <button type="submit">Save</button>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

@@ -29,7 +29,6 @@
             </thead>
             <tbody>
                 <% if (users.length > 0) { 
-            
                     users.forEach(user => { %>
                 <tr>
                     <td><%= user.id %></td>
@@ -38,8 +37,11 @@
                     <td><%= user.city %></td>
                     <td>
                         <div class="action-buttons">
-                            <button class="btn btn-edit">Edit</button>
-                            <button class="btn btn-delete">Delete</button>
+                            <a href="/edit/<%= user.id %>" class="btn btn-edit">Edit</a>
+                            <form action="/delete-user/<%= user.id %>" method="post">
+                                <button class="btn btn-delete">Delete</button>
+                            </form>
+
                         </div>
                     </td>
                 </tr>

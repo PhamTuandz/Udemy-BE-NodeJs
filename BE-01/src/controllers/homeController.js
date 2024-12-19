@@ -1,6 +1,10 @@
 const connection = require("../config/database")
 const {
-  getAllUsers
+  getAllUsers,
+  getUserById,
+  createUser,
+  editUser,
+  deleteUserById
 } = require("../services/CRUDservice")
 
 
@@ -13,7 +17,7 @@ const getHomePage = async (req, res) => {
 
 const getCreateUserPage = (req, res) => res.render('create.ejs')
 
-const createUer = async (req, res) => {
+const addUser = async (req, res) => {
   console.log("Check res", req.body)
   const {
     email,
@@ -21,18 +25,44 @@ const createUer = async (req, res) => {
     city
   } = req.body
 
-  // connection.query('INSERT INTO Users (email, name, city) VALUES (?, ?, ?)', [email, name, city], (error, results, fields) => {
-  //   if (error) throw error
-  //   console.log('The solution is: ', results)
-  //   res.send('Create a new user successfully!')
-  // })
+  await createUser(email, name, city)
 
-  const [result, fields] = await connection.execute('INSERT INTO Users (email, name, city) VALUES (?, ?, ?)', [email, name, city])
-  console.log('The solution is: ', result)
   res.send('Create a new user successfully!')
+}
+
+const getEditUserPage = async (req, res) => {
+  const userId = req.params.id
+  const result = await getUserById(userId)
+  if (result.length === 0) {
+    return res.send('User not found!')
+  }
+  return res.render('edit.ejs', {
+    user: result[0]
+  })
+}
+
+const updateUser = async (req, res) => {
+  const {
+    email,
+    name,
+    city,
+    id
+  } = req.body
+  editUser(email, name, city, id)
+  res.redirect('/')
+}
+
+const deleteUser = async (req, res) => {
+  const userId = req.params.id
+
+  await deleteUserById(userId)
+  res.redirect('/')
 }
 module.exports = {
   getHomePage,
-  createUer,
-  getCreateUserPage
+  addUser,
+  getCreateUserPage,
+  getEditUserPage,
+  updateUser,
+  deleteUser
 }
